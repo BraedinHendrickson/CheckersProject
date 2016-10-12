@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.11" icons="false" automaticImage="PNG" always-add-relationships="true" 
+  generalizations="true" realizations="true" associations="true" dependencies="true" nesting-relationships="true" 
+  router="FAN">  
+  <class id="1" language="java" name="checkers.TurnLabel" project="CheckersGame" 
+    file="/CheckersGame/src/checkers/TurnLabel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="190" width="184" x="764" y="785"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="checkers.CheckersPanel.ButtonListener" project="CheckersGame" 
+    file="/CheckersGame/src/checkers/CheckersPanel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="94" width="184" x="475" y="785"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="checkers.CheckersGUI" project="CheckersGame" 
+    file="/CheckersGame/src/checkers/CheckersGUI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="94" width="103" x="680" y="37"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="checkers.CheckersModel" project="CheckersGame" 
+    file="/CheckersGame/src/checkers/CheckersModel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="494" width="228" x="475" y="1015"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="checkers.Move" project="CheckersGame" file="/CheckersGame/src/checkers/Move.java" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="222" width="112" x="86" y="2127"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="6" language="java" name="checkers.ICheckersPiece" project="CheckersGame" 
+    file="/CheckersGame/src/checkers/ICheckersPiece.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="110" width="237" x="299" y="1961"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="7" language="java" name="checkers.CheckersPiece" project="CheckersGame" 
+    file="/CheckersGame/src/checkers/CheckersPiece.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="142" width="237" x="147" y="1549"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="checkers.SingleDisk" project="CheckersGame" 
+    file="/CheckersGame/src/checkers/SingleDisk.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="190" width="237" x="445" y="1731"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="checkers.CheckersPanel" project="CheckersGame" 
+    file="/CheckersGame/src/checkers/CheckersPanel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="574" width="159" x="680" y="171"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="10" language="java" name="checkers.DoubleDisk" project="CheckersGame" 
+    file="/CheckersGame/src/checkers/DoubleDisk.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="190" width="237" x="147" y="1731"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="11" language="java" name="checkers.ICheckersModel" project="CheckersGame" 
+    file="/CheckersGame/src/checkers/ICheckersModel.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="126" width="148" x="597" y="1961"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <enumeration id="12" language="java" name="checkers.Player" project="CheckersGame" 
+    file="/CheckersGame/src/checkers/Player.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="110" width="119" x="557" y="2127"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <dependency id="13">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="14">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="15" name="labelWhite"/>      
+      <multiplicity id="16" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <realization id="17">    
+    <bendpoint x="414" y="1731"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="6"/>  
+  </realization>  
+  <dependency id="18">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="19">    
+    <bendpoint x="53" y="1015"/>    
+    <bendpoint x="53" y="1549"/>    
+    <bendpoint x="53" y="1731"/>    
+    <bendpoint x="53" y="1961"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="20">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <dependency id="21">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <association id="22">    
+    <bendpoint x="796" y="1015"/>    
+    <bendpoint x="796" y="1549"/>    
+    <bendpoint x="796" y="1731"/>    
+    <bendpoint x="796" y="1961"/>    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="23" name="player"/>      
+      <multiplicity id="24" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="25">    
+    <bendpoint x="32" y="785"/>    
+    <bendpoint x="32" y="1015"/>    
+    <bendpoint x="32" y="1549"/>    
+    <bendpoint x="32" y="1731"/>    
+    <bendpoint x="32" y="1961"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="26" name="move"/>      
+      <multiplicity id="27" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <generalization id="28">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <dependency id="29">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="9"/>  
+  </dependency>  
+  <dependency id="30">    
+    <bendpoint x="733" y="785"/>    
+    <bendpoint x="733" y="1015"/>    
+    <bendpoint x="733" y="1549"/>    
+    <bendpoint x="733" y="1731"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <association id="31">    
+    <bendpoint x="116" y="1731"/>    
+    <bendpoint x="137" y="1961"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="32" name="owner"/>      
+      <multiplicity id="33" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <association id="34">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="35" name="buttonListener"/>      
+      <multiplicity id="36" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <dependency id="37">    
+    <bendpoint x="469" y="1549"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="38">    
+    <bendpoint x="247" y="1961"/>    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="39">    
+    <bendpoint x="116" y="1961"/>    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="40">    
+    <bendpoint x="691" y="1549"/>    
+    <bendpoint x="712" y="1731"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="41" name="board"/>      
+      <multiplicity id="42" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="6" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <dependency id="43">    
+    <bendpoint x="978" y="785"/>    
+    <bendpoint x="978" y="1015"/>    
+    <bendpoint x="978" y="1549"/>    
+    <bendpoint x="978" y="1731"/>    
+    <bendpoint x="978" y="1961"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <dependency id="44">    
+    <bendpoint x="95" y="1731"/>    
+    <bendpoint x="95" y="1961"/>    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="45">    
+    <bendpoint x="74" y="1549"/>    
+    <bendpoint x="74" y="1731"/>    
+    <bendpoint x="74" y="1961"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="46" name="prevMove"/>      
+      <multiplicity id="47" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <dependency id="48">    
+    <bendpoint x="414" y="1549"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <generalization id="49">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <realization id="50">    
+    <bendpoint x="712" y="1549"/>    
+    <bendpoint x="754" y="1731"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <dependency id="51">    
+    <bendpoint x="268" y="1961"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <association id="52">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="53" name="labelRed"/>      
+      <multiplicity id="54" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <nesting id="55">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="2"/>  
+  </nesting>  
+  <dependency id="56">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <dependency id="57">    
+    <bendpoint x="566" y="1961"/>    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <association id="58">    
+    <bendpoint x="689" y="785"/>    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="59" name="model"/>      
+      <multiplicity id="60" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <dependency id="61">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="62">    
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
+  <dependency id="63">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <association id="64">    
+    <bendpoint x="775" y="1549"/>    
+    <bendpoint x="775" y="1731"/>    
+    <bendpoint x="775" y="1961"/>    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="65" name="player"/>      
+      <multiplicity id="66" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="false" multiplicity="false"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="false" multiplicity="false"/>
+</class-diagram>
