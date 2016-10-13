@@ -1,6 +1,10 @@
 package checkers;
 
+/*******************************************************************
+ * Enum for the list of players.
+ ******************************************************************/
 public enum Player {
 	
-	User, Other;
+	/** Players. */
+	White, Red;
 }
