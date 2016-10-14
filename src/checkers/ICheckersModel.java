@@ -13,7 +13,7 @@ public interface ICheckersModel {
 	 * @return    The status of the game state.
 	 **************************************************************************/
 	boolean isGameOver();
-	
+	 //or is it?
 	/***************************************************************************
 	 * Determines the validity of a move.
 	 * 
