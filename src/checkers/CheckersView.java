@@ -244,8 +244,11 @@ public class CheckersView extends JPanel {
 	}
 	
 	public void gameOver() {
-		String s = "";
-		//s = JOptionPane.showInputDialog("             Congratulations on winning!!!\nPlease enter a three character name for rankings.");
+		for (int row = ZERO; row < BOARDSIZE; row++) {
+			for (int col = ZERO; col < BOARDSIZE; col++) {
+				board[row][col].setEnabled(false);
+			}
+		}
 	}
 	
 	

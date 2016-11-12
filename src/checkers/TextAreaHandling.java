@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 public class TextAreaHandling {
 	 File sessionFile;
@@ -19,6 +20,20 @@ public class TextAreaHandling {
 		rankingFile = new File("rankingText.txt");
 		
 		
+		/*PrintWriter printer;
+		try {
+			printer = new PrintWriter(sessionFile);
+			printer.print("");
+			printer.close();
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}*/
+		
+		setUp();
+	}
+	
+	public void setUp() {
 		PrintWriter printer;
 		try {
 			printer = new PrintWriter(sessionFile);
@@ -28,8 +43,6 @@ public class TextAreaHandling {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		
 	}
 	
 	public String readSession() {
@@ -100,7 +113,7 @@ public class TextAreaHandling {
 	            e.printStackTrace();
 	        }
 			if (str.equals("")){
-				str = "No Rankings Currently.\n\n Be the first to win and become #1!!!";
+				str = "No Rankings Currently.\n\n Be the first to win!!!";
 			}
 	        return str;
 	    }
@@ -117,7 +130,7 @@ public class TextAreaHandling {
 			 
 			 
 		        try {
-		            writer.write(str);
+		            writer.write(str + "   Won on: " + new Date().toString());
 		            writer.write("\r\n");   // write new line
 		            writer.close();
 		        } catch (IOException e) {

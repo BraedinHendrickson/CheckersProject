@@ -422,6 +422,13 @@ public class CheckersModel implements ICheckersModel {
 		sessionMove = currentPlayer().toString() + " has selected the board postion R" + row + "-C" + col + ".";
 	}
 	
+	public void reset() {
+		sessionMove = "Begin, White's move.";
+		firstClick = true;
+		player = Player.White;
+		boardSetUp();
+	}
+	
 	
 	
 	

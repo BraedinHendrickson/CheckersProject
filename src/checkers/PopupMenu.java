@@ -28,6 +28,8 @@ public class PopupMenu {
 	private JComboBox<String> cBox;
 	private JButton button;
 	private int count;
+	private boolean newGame;
+	private boolean running;
 
 
 	public PopupMenu() {
@@ -46,6 +48,8 @@ public class PopupMenu {
 		cBox = new JComboBox<String>();
 		button = new JButton("Select");
 		count = 0;
+		newGame = false;
+		running = false;
 
 		    
 		init();
@@ -82,7 +86,6 @@ public class PopupMenu {
 	  }
 	
 	void addBoardListener(ActionListener listenForBoardButton) {
-
 		button.addActionListener(listenForBoardButton);
 	}
 	
@@ -146,11 +149,29 @@ public class PopupMenu {
 		} else if (i == 3) {
 			
 		} else if (i == 4) {
-			
+			newGame = true;
+			running = false;
+			close();
 		} else {
 			System.out.println("hello");
 		}
 		
+	}
+	
+	public boolean getNewGame() {
+		return newGame;
+	}
+	
+	public void setNewGame() {
+		newGame = false;
+	}
+	
+	public boolean getRunning() {
+		return running;
+	}
+	
+	public void setRunning() {
+		running = true;
 	}
 	
 

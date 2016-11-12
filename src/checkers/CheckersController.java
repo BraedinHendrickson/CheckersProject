@@ -20,6 +20,8 @@ public class CheckersController {
 
 		this.view.addBoardListener(new ButtonListener());
 		this.menu.addBoardListener(new ButtonListener());
+		this.popup.addBoardListener(new ButtonListener());
+		
 		
 		displayBoard();
 	}
@@ -39,6 +41,11 @@ public class CheckersController {
 			if (e.getSource() == menu.getSelectButton()) {
 				if (menu.getOption().substring(7, 8).equals("a")) {
 					menu.performOperation(0);
+				} else if (menu.getOption().substring(7, 8).equals("4")) {
+					menu.close();
+					model.reset();
+					taHandler.setUp();
+					displayBoard();
 				} else {
 					menu.performOperation(Integer.parseInt(menu.getOption().substring(7, 8)));
 				}
@@ -46,7 +53,9 @@ public class CheckersController {
 			
 
 			if (e.getSource() == view.getOptionButton()) {
+				menu.setRunning();
 				menu.setVisible();
+				
 			} else if (e.getSource() == view.getGameInfoButton()) {
 				view.setTextArea(taHandler.readSession());
 			} else if (e.getSource() == view.getScoreBoardButton()) {

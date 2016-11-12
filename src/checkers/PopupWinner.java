@@ -131,7 +131,6 @@ public class PopupWinner {
 	public String selection() {
 		String s = "";
 		s = (String)cBox1.getSelectedItem() + cBox2.getSelectedItem() + cBox3.getSelectedItem();
-		System.out.println(s);
 		return s;
 	}
 }
