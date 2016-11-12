@@ -1,5 +1,3 @@
-
-
 package checkers;
 
 /*******************************************************************************
@@ -57,123 +55,57 @@ public class SingleDisk extends CheckersPiece {
 			int xPos = ZERO;
 			// Position between the from row position and the to row position.
 			int yPos = ZERO;
+			
+			int mTC = move.getToColumn();
+			int mTR = move.getToRow();
+			int mFC = move.getFromColumn();
+			int mFR = move.getFromRow();
 		
 			// If the piece being moved belongs to user White.
-			if (board[move.getFromRow()][move.getFromColumn()].player() 
-				== Player.White) {
+			if (board[mFR][mFC].player() == Player.White) {
 				
-				// Check moving UP one square, and either LEFT or RIGHT one
-				// square is valid.
-				if ((move.getToRow() - move.getFromRow()) == ONE_NEG 
-					&& Math.abs(move.getToColumn() - move.getFromColumn())
-					== ONE && board[move.getToRow()][ move.getToColumn()] 
-							== null) {
+				// Check moving UP one square.
+				if ((mTR - mFR) == ONE_NEG) {
 					return true;
-				}
-				
-				// Check moving UP two squares, and either LEFT or RIGHT two
-				// squares and the to position is open.
-				if ((move.getToRow() - move.getFromRow()) == TWO_NEG 
-						&& Math.abs(move.getToColumn() - move.getFromColumn()) 
-						== TWO && board[move.getToRow()][ move.getToColumn()] 
-								== null) {
-					
-					// Check that the movement was LEFT.
-					if (move.getToRow() - move.getFromRow() == TWO_NEG 
-							&& move.getToColumn() - move.getFromColumn() 
-							== TWO_NEG) {
-						xPos = ONE;
-						yPos = ONE;
-						
-						// Check that there was an opposing player piece 
-						// between the from position and the to position.
-						if (board[move.getToRow() + xPos]
-							[ move.getToColumn() + yPos] != null 
-							&& board[move.getToRow() + xPos]
-									[move.getToColumn() + yPos].player() 
+				} else if (mTR - mFR < 0) {
+					xPos = ONE;
+					yPos = checkDirection(mTC, mFC);
+					if (board[mTR + xPos][mTC + yPos] != null 
+							&& board[mTR + xPos][mTC + yPos].player() 
 									== Player.Red) {
 							return true;
-						}
 					}
-		
-					// Check that the movement was RIGHT.
-					if (move.getToRow() - move.getFromRow() == TWO_NEG 
-							&& move.getToColumn() - move.getFromColumn() 
-							== TWO) {
-						xPos = ONE;
-						yPos = ONE_NEG;
-						
-						// If there was an opposing player piece between the 
-						// from position and the to position return true.
-						if (board[move.getToRow() + xPos]
-								[ move.getToColumn() + yPos] != null 
-								&& board[move.getToRow() + xPos]
-										[ move.getToColumn() + yPos].player() 
-										== Player.Red) {
-							return true;
-						}
-					}				
-				}	
-				
-			// If the piece being moved belongs to user Red.
-			} else if (board[move.getFromRow()]
-					[move.getFromColumn()].player() == Player.Red) {
-				
-				// Check moving DOWN one square, and either LEFT or RIGHT one
-				// square is valid.
-				if ((move.getToRow() - move.getFromRow()) == ONE 
-						&& Math.abs(move.getToColumn() - move.getFromColumn()) 
-						== ONE 
-						&& board[move.getToRow()][ move.getToColumn()] 
-								== null) {
-					return true;
 				}
 				
-				// Check moving DOWN two squares, and either LEFT or RIGHT two
-				// squares and the to position is open.
-				if (Math.abs(move.getToRow() - move.getFromRow()) == TWO 
-						&& Math.abs(move.getToColumn() - move.getFromColumn()) 
-						== TWO) {
-					
-					// Check that the movement was LEFT.
-					if (move.getToRow() - move.getFromRow() == TWO 
-							&& move.getToColumn() - move.getFromColumn() 
-							== TWO_NEG) {
-						xPos = ONE_NEG;
-						yPos = ONE;
-						
-						// Check that there was an opposing player piece 
-						// between the from position and the to position.
-						if (board[move.getToRow() + xPos]
-								[move.getToColumn() + yPos] != null 
-								&& board[move.getToRow() + xPos]
-										[move.getToColumn() + yPos].player() 
-										== Player.White) {
+
+			// If the piece being moved belongs to user Red.
+			} else if (board[mFR][mFC].player() == Player.Red) {
+				
+				// Check moving DOWN one square.
+				if ((mTR - mFR) == ONE) {
+					return true;
+				} else if (mTR - mFR > 0) {
+					xPos = ONE_NEG;
+					yPos = checkDirection(mTC, mFC);
+					if (board[mTR + xPos][mTC + yPos] != null 
+							&& board[mTR + xPos][mTC + yPos].player() 
+									== Player.White) {
 							return true;
-						}
 					}
-		
-					// Check that the movement was RIGHT.
-					if (move.getToRow() - move.getFromRow() == TWO 
-							&& move.getToColumn() - move.getFromColumn() 
-							== TWO) {
-						xPos = ONE_NEG;
-						yPos = ONE_NEG;
-						
-						// If there was an opposing player piece between the 
-						// from position and the to position return true.
-						if (board[move.getToRow() + xPos]
-								[move.getToColumn() + yPos] != null 
-								&& board[move.getToRow() + xPos]
-										[ move.getToColumn() + yPos].player() 
-										== Player.White) {
-							return true;
-						}
-					}	
 				}
 			}
 		}
 		// Return false if above conditions are not met.
 		return false;	
-	}			
+	}	
+	
+	private int checkDirection(int MTC, int MFC) {
+		int result = MTC - MFC;
+		if (result < 0) {
+			return 1;
+		} else {
+			return -1;
+		}	
+	}	
+	
 }

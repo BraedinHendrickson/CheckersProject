@@ -1,5 +1,3 @@
-
-
 package checkers;
 
 /**********************************************************************
@@ -9,6 +7,9 @@ public class CheckersModel implements ICheckersModel {
 	
     /** Width and Height of the board. */
 	private static final int BOARDSIZE = 8;
+	
+	private int prevRow = 0;
+	private int prevCol = 0;
 	
 	/** Final value 0. */
 	private static final int ZERO = 0;
@@ -46,16 +47,23 @@ public class CheckersModel implements ICheckersModel {
 	/** The Player in-game who is executing a command. */
 	private Player player;
 	
+	
+	private boolean firstClick;
+	
 	/** Boolean value to see if multiple 'jumps' can be made in-game. */
 	private boolean sameTurn;
 	
 	/** Holds onto the last move made by the current Player. */
 	private Move prevMove;
 	
+	private String sessionMove;
+	
 	/**********************************************************************
 	 * Constructor.
 	 *********************************************************************/
 	public CheckersModel() {
+		sessionMove = "Begin, White's move.";
+		firstClick = true;
 		player = Player.White;
 		boardSetUp();
 	}
@@ -68,7 +76,7 @@ public class CheckersModel implements ICheckersModel {
 	private ICheckersPiece[][] boardSetUp() {
 		board = new ICheckersPiece[BOARDSIZE][BOARDSIZE];
 		
-		board[ZERO][ZERO] = new SingleDisk(Player.Red);
+		/*board[ZERO][ZERO] = new SingleDisk(Player.Red);
 		board[ZERO][TWO] = new SingleDisk(Player.Red);
 		board[ZERO][FOUR] = new SingleDisk(Player.Red);
 		board[ZERO][SIX] = new SingleDisk(Player.Red);
@@ -92,7 +100,10 @@ public class CheckersModel implements ICheckersModel {
 		board[SEVEN][ONE] = new SingleDisk(Player.White);
 		board[SEVEN][THREE] = new SingleDisk(Player.White);
 		board[SEVEN][FIVE] = new SingleDisk(Player.White);
-		board[SEVEN][SEVEN] = new SingleDisk(Player.White);
+		board[SEVEN][SEVEN] = new SingleDisk(Player.White);*/
+		
+		board[TWO][FOUR] = new DoubleDisk(Player.Red);
+		board[TWO][SIX] = new DoubleDisk(Player.White);
 		
 		return board;
 	}
@@ -149,6 +160,8 @@ public class CheckersModel implements ICheckersModel {
 					= board[move.getFromRow()][move.getFromColumn()];
 			// The "from" position is cleared.
 			board[move.getFromRow()][move.getFromColumn()] = null;
+			
+			setSessionMove(move, true);
 		
 			// The move was a jump.
 			if (Math.abs(move.getToRow() - move.getFromRow()) == 2) {
@@ -164,6 +177,8 @@ public class CheckersModel implements ICheckersModel {
 		
 			// Check if promotion should occur and execute if necessary.
 			promotion(move);
+			
+			isGameOver();
 		
 			// If it is still the same users turn do not 
 			// change the current player.
@@ -174,6 +189,8 @@ public class CheckersModel implements ICheckersModel {
 					player = Player.White;
 				}
 			}
+		} else {
+			setSessionMove(move, false);
 		}
 	}
 	
@@ -186,122 +203,26 @@ public class CheckersModel implements ICheckersModel {
 	 * @return       Returns whether or not it is still the users turn.
 	 *********************************************************************/
 	public final boolean checkSameTurn(final Move move) {
+		int mTC = move.getToColumn();
+		int mTR = move.getToRow();
+		int mFC = move.getFromColumn();
+		int mFR = move.getFromRow();
 		
-		// Check that out of bounds isn't valid.
-		if (move.getToRow() - 2 < 0 || move.getToColumn() - 2 < 0 
-				|| move.getToRow() + 2 > SEVEN 
-				|| move.getToColumn() + 2 > SEVEN) {
-			return false;
-		}
-		
-		    // Checks if the piece is a single disk.
-			if (pieceAt(move.getToRow(), move.getToColumn()).type() 
-					== "SingleDisk") {
-				
-				// Check that the piece is of player type "White".
-				if (board[move.getToRow()]
-						[move.getToColumn()].player() == Player.White) {
-					
-					// Checks UP and LEFT move.
-					if (board[move.getToRow() - 2][move.getToColumn() - 2] 
-							== null 
-							&& board[move.getToRow() - 1]
-									[move.getToColumn() - 1] != null 
-							&& board[move.getToRow() - 1]
-									[move.getToColumn() - 1].player()
-							== Player.Red) {
+
+		int[] twos = new int[2];
+		twos[0] = -2;
+		twos[1] = 2;
+		for (int item1 : twos) {
+			for (int item2 : twos) {
+				if (mTR+item1 >= 0 && mTR+item1 < 8 && mTC+item2 >= 0 && mTC+item2 < 8) {
+					Move tempMove = new Move(mTR, mTC, mTR+item1, mTC+item2);
+					if (isValidMove(tempMove)) {
 						prevMove = move;
 						return true;
 					}
-					
-					// Checks UP and RIGHT move.
-					if (board[move.getToRow() - 2][move.getToColumn() + 2] 
-							== null 
-							&& board[move.getToRow() - 1]
-									[move.getToColumn() + 1] != null 
-							&& board[move.getToRow() - 1]
-									[move.getToColumn() + 1].player()
-							== Player.Red) {
-						prevMove = move;
-						return true;
-					}
-					
-				// Check that the piece is of player type "Red".
-				} else {
-					
-					// Checks that the move was DOWN and LEFT.
-					if (board[move.getToRow() + 2][move.getToColumn() - 2] 
-							== null 
-							&& board[move.getToRow() + 1]
-									[move.getToColumn() - 1] != null 
-							&& board[move.getToRow() + 1]
-									[move.getToColumn() - 1].player()
-							== Player.White) {
-						prevMove = move;
-						return true;
-					}
-					
-					// Checks was DOWN and RIGHT move.
-					if (board[move.getToRow() + 2][move.getToColumn() + 2] 
-							== null 
-							&& board[move.getToRow() + 1]
-									[move.getToColumn() + 1] != null 
-							&& board[move.getToRow() + 1]
-									[move.getToColumn() + 1].player()
-							== Player.White) {
-						prevMove = move;
-						return true;
-					}
-				}
-				
-			// Checks if the piece is a double disk.
-			} else if (pieceAt(move.getToRow(), move.getToColumn()).type() 
-					== "DoubleDisk") {
-				
-				// Checks that the move was DOWN and LEFT.
-				if (board[move.getToRow() - 2][move.getToColumn() - 2] == null 
-						&& board[move.getToRow() - 1]
-								[move.getToColumn() - 1] != null 
-						&& board[move.getToRow() - 1]
-								[move.getToColumn() - 1].player() 
-						!= currentPlayer()) {
-					prevMove = move;
-					return true;
-				}
-				
-				// Checks DOWN and RIGHT move.
-				if (board[move.getToRow() - 2][move.getToColumn() + 2] == null 
-						&& board[move.getToRow() - 1]
-								[move.getToColumn() + 1] != null 
-						&& board[move.getToRow() - 1]
-								[move.getToColumn() + 1].player() 
-						!= currentPlayer()) {
-					prevMove = move;
-					return true;
-				}
-				
-				// Checks was UP and LEFT move.
-				if (board[move.getToRow() + 2][move.getToColumn() - 2] == null 
-						&& board[move.getToRow() + 1]
-								[move.getToColumn() - 1] != null 
-						&& board[move.getToRow() + 1]
-								[move.getToColumn() - 1].player() 
-						!= currentPlayer()) {
-					prevMove = move;
-					return true;
-				}
-				
-				// Checks UP and RIGHT move.
-				if (board[move.getToRow() + 2][move.getToColumn() + 2] == null 
-						&& board[move.getToRow() + 1]
-								[move.getToColumn() + 1] != null 
-						&& board[move.getToRow() + 1]
-								[move.getToColumn() + 1].player() 
-						!= currentPlayer()) {
-					prevMove = move;
-					return true;
 				}
 			}
+		}
 		return false;
 	}
 	
@@ -423,11 +344,85 @@ public class CheckersModel implements ICheckersModel {
 		
 		// If either player has zero pieces remaining the game is over.
 		if (redPieceCount == 0) {
+			sessionMove = "\n\nWhite wins the game!";
 			return true;
 		} else if (whitePieceCount == 0) {
+			sessionMove = "\n\nRed wins the game!";
 			return true;
 		}
 		return false;
 		
 	}
+	
+	public void actionHandling(int row, int col) {
+		if (firstClick) {
+			prevRow = row;
+			prevCol = col;
+			firstClick = false;
+			setSessionMove(row, col);
+		} else {
+			Move move = new Move(prevRow, prevCol, row, col);
+			move(move);
+			firstClick = true;
+		}
+	}
+	
+	public String currentStatusLabel() {
+		String str = "";
+		if (isGameOver() == true) {
+			str = "   G a m e   O v e r   ";
+		} else if (currentPlayer() == Player.White) {
+			str = "   W h i t e ' s     T u r n   ";
+		} else if (currentPlayer() == Player.Red) {
+			str = "     R e d ' s      T u r n     ";
+		}
+		return str;
+	}
+	
+	public int boardLayout(int row, int col) {
+		if (board[row][col] == null && (row + col) % TWO == ONE) {
+			return 2;
+		} else if (board[row][col] == null && (row + col) % TWO == ZERO) {
+			return 3;
+		} else if (board[row][col].player() == Player.White && board[row][col].type().equals("SingleDisk")) {
+			return 5;
+		} else if (board[row][col].player() == Player.White && board[row][col].type().equals("DoubleDisk")) {
+			return 7;
+		} else if (board[row][col].player() == Player.Red && board[row][col].type().equals("SingleDisk")) {
+			return 4;
+		} else if (board[row][col].player() == Player.Red && board[row][col].type().equals("DoubleDisk")) {
+			return 6;
+		} else {
+			return 0;
+		}
+	}
+	
+	public String getSessionMove() {
+		return sessionMove;
+	}
+	
+	public void setSessionMove(Move move, boolean valid) {
+		Player otherPlayer = null;
+		if (currentPlayer() == Player.White) {
+			otherPlayer = Player.Red;
+		} else {
+			otherPlayer = Player.White;
+		}
+		if (valid) {
+			sessionMove = currentPlayer().toString() + " moved from R" + move.getFromRow() + "-C" + move.getFromColumn() +
+				" to R" + move.getToRow() + "-C" + move.getToColumn() + ".\n\n" +  otherPlayer.toString() + "'s Turn.";
+		} else {
+			sessionMove = currentPlayer().toString() + " failed to move from R" + move.getFromRow() + "-C" + move.getFromColumn() +
+					" to R" + move.getToRow() + "-C" + move.getToColumn() + " because the \nmove was not valid. Please try a different move.";
+		} 
+		
+	}
+	
+	public void setSessionMove(int row, int col){
+		sessionMove = currentPlayer().toString() + " has selected the board postion R" + row + "-C" + col + ".";
+	}
+	
+	
+	
+	
 }

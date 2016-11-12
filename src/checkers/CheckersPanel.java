@@ -1,18 +1,23 @@
-
-
 package checkers;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Action;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
@@ -97,10 +102,16 @@ public class CheckersPanel extends JPanel {
 
 	/** Main panel. */
 	private JPanel center = new JPanel();
-	/** North panel, place on center panel. */
+	/** North panel, place on right panel. */
 	private JPanel top = new JPanel();
-	/** South panel, place on center panel. */
+	/** South panel, place on right panel. */
 	private JPanel bottom = new JPanel();
+	/** Left panel, place on center panel. */
+	private JPanel left = new JPanel();
+	/** Right panel, placed on center panel. */
+	private JPanel right = new JPanel();
+	/** text panel, placed on right panel. */
+	private JPanel text = new JPanel();
 
 	/** Label displays the current players turn. */
 	private JLabel playerTurn = new JLabel();
@@ -108,6 +119,18 @@ public class CheckersPanel extends JPanel {
 	private JLabel playerTurnIcon1 = new JLabel();
 	/** Label displays right icon piece next to playerTurn label. */
 	private JLabel playerTurnIcon2 = new JLabel();
+	
+	/** Options menu. */
+	private JButton options = new JButton("Options");
+	/** Current info of game. */
+	private JButton gameInfo = new JButton("Session");
+	/** Previous game histories. */
+	private JButton scoreBoard = new JButton("Rankings");
+	
+	/** JTextArea for displaying text information to user. */
+	private JTextArea ta = new JTextArea();
+	/** JScollPane allows scrolling area for the information in the text area. */
+	private JScrollPane sp = new JScrollPane(ta, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 
 	/*******************************************************************
 	 * Panel containing all sub panels and buttons.
@@ -124,9 +147,16 @@ public class CheckersPanel extends JPanel {
 		timerWhite = new Timer(THREEZEROZERO, labelWhite);
 
 		// Layouts for the panels.
-		center.setLayout(new BoxLayout(center, BoxLayout.Y_AXIS));
+		center.setLayout(new BoxLayout(center, BoxLayout.X_AXIS));
 		top.setLayout(new BoxLayout(top, BoxLayout.X_AXIS));
-		bottom.setLayout(new GridLayout(BOARDSIZE, BOARDSIZE));
+		bottom.setLayout(new BoxLayout(bottom, BoxLayout.X_AXIS));
+		left.setLayout(new GridLayout(BOARDSIZE, BOARDSIZE));
+		right.setLayout(new BoxLayout(right, BoxLayout.Y_AXIS));
+		
+		// Set preferred sizes and preferences.
+		ta.setPreferredSize(new Dimension(300, 500));
+		ta.setEditable(false);
+		right.setPreferredSize(new Dimension(350, 500));	
 
 		// Create the board buttons, set backgrounds.
 		for (int row = ZERO; row < BOARDSIZE; row++) {
@@ -135,7 +165,7 @@ public class CheckersPanel extends JPanel {
 				board[row][col].setPreferredSize(
 						new Dimension(EIGHTZERO, EIGHTZERO));
 				board[row][col].addActionListener(buttonListener);
-				bottom.add(board[row][col]);
+				left.add(board[row][col]);
 				if ((row + col) % TWO == ZERO) {
 					board[row][col].setIcon(blackSquare);
 				} else {
@@ -154,10 +184,28 @@ public class CheckersPanel extends JPanel {
 		top.add(playerTurnIcon1);
 		top.add(playerTurn);
 		top.add(playerTurnIcon2);
+		
+		// Add buttons to panel
+		bottom.add(options);
+		bottom.add(Box.createRigidArea(new Dimension(10,0)));
+		bottom.add(gameInfo);
+		bottom.add(Box.createRigidArea(new Dimension(10,0)));
+		bottom.add(scoreBoard);
+		
+		// Add scroll pane to panel.
+		text.add(sp);
+		
+		// Add content to panel.
+		right.add(Box.createRigidArea(new Dimension(0,30)));
+		right.add(top);
+		right.add(Box.createRigidArea(new Dimension(0,30)));
+		right.add(bottom);
+		right.add(Box.createRigidArea(new Dimension(0,10)));
+		right.add(text);
 
 		// Add sub panels to center panel.
-		center.add(top);
-		center.add(bottom);
+		center.add(left);
+		center.add(right);
 
 		// Add center panel to frame.
 		add(center, BorderLayout.CENTER);
@@ -287,5 +335,7 @@ public class CheckersPanel extends JPanel {
 		}
 		
 	}
+	
+	
 
 }

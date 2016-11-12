@@ -1,10 +1,7 @@
-
-
 package checkers;
 
 //http://stackoverflow.com/questions/17524080/enable-blinking-
 //of-jlabel-3-times-and-then-remain-invisible-disappear
-   
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

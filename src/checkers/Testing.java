@@ -1,5 +1,3 @@
-
-
 package checkers;
 
 import static org.junit.Assert.*;

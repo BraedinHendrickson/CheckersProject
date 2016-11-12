@@ -1,5 +1,3 @@
-
-
 package checkers;
 
 /**********************************************************************
@@ -46,22 +44,32 @@ public abstract class CheckersPiece implements ICheckersPiece {
 	 *********************************************************************/
 	public boolean isValidMove(final Move move, 
 			final ICheckersPiece[][] board) {
+		int MTC = move.getToColumn();
+		int MTR = move.getToRow();
+		int MFC = move.getFromColumn();
+		int MFR = move.getFromRow();
 		
-		// Checks that a move cannot be to the same position the piece
-		// originated from.
-		if (move.getToRow() != move.getFromRow() && move.getToColumn() 
-				!= move.getFromColumn()) {
+		// Checks that the "piece" selected existed (Checks that a 
+		// blank square was not selected).
+		if (board[MTR][MTC] == null) {
+		
+			// Checks that a move cannot be to the same position the piece
+			// originated from.
+			if (MTR != MFR && MTC != MFC) {
 	
-			// Checks that only diagonal movements are aloud.
-			if (Math.abs(move.getToRow() - move.getFromRow()) 
-					== Math.abs(move.getToColumn() - move.getFromColumn())) {
-				
-				// Checks that the "piece" selected existed (Checks that a 
-				// blank square was not selected).
-				if (board[move.getToRow()][move.getToColumn()] == null) {
+				// Checks that only diagonal movements are aloud.
+				if (Math.abs(MTR - MFR) == Math.abs(MTC - MFC)) {
 					
-					return true;
-					
+					// Check that move is within board boundary.
+					if ((MTR >= 0 && MTR <= 7) && (MTC >= 0 && MTC <= 7)) {
+						
+						// Check the move is a max of two tiles away from origin.
+						if (Math.abs(MTC - MFC) <= 2 && Math.abs(MTR - MFR) <= 2) {
+						
+							return true;
+						
+						}
+					}
 				}
 			}
 		}

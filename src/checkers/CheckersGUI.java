@@ -1,5 +1,3 @@
-
-
 package checkers;
 
 import java.awt.Dimension;
@@ -26,12 +24,15 @@ final class CheckersGUI {
 	 * @param  args  
 	 **************************************************************************/
 	public static void main(final String[] args) {
+		CheckersView view = new CheckersView();
+		CheckersModel model = new CheckersModel();
+		PopupMenu menu = new PopupMenu();
+		CheckersController controller = new CheckersController(view, model, menu);
 		
 		JFrame frame = new JFrame("Checkers!!!");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		CheckersPanel panel = new CheckersPanel();
         
-		frame.getContentPane().add(panel);
+		frame.getContentPane().add(view);
 
 		// Frame sizing adjustment.
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
