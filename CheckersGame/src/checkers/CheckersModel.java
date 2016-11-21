@@ -1,10 +1,12 @@
 package checkers;
 
+import javax.swing.JOptionPane;
+
 /**********************************************************************
  * Model class for executing the game logic of checkers.
  *********************************************************************/
 public class CheckersModel implements ICheckersModel {
-	
+	 
     /** Width and Height of the board. */
 	private static final int BOARDSIZE = 8;
 	
@@ -162,7 +164,6 @@ public class CheckersModel implements ICheckersModel {
 		
 			// Check if promotion should occur and execute if necessary.
 			promotion(move);
-		
 			// If it is still the same users turn do not 
 			// change the current player.
 			if (!sameTurn) {
@@ -307,8 +308,8 @@ public class CheckersModel implements ICheckersModel {
 	 * Checks that if it is still the same users turn(i.e. a jump has been
 	 * made) then the piece that made the initial jump must be the piece moved.
 	 * 
-	 * @param  move    .
-	 * @return         .
+	 * @param  move  The move to be evaluated.
+	 * @return       Returns true if it is still the same users turn.
 	 *********************************************************************/
 	public final boolean validSameTurn(final Move move) {
 		if (sameTurn) {
@@ -420,7 +421,7 @@ public class CheckersModel implements ICheckersModel {
 		}
 		
 		// If either player has zero pieces remaining the game is over.
-		if (redPieceCount == 0) {
+		if (redPieceCount == 0) { 
 			return true;
 		} else if (whitePieceCount == 0) {
 			return true;

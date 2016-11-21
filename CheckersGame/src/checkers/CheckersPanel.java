@@ -10,6 +10,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.Timer;
@@ -237,8 +238,14 @@ public class CheckersPanel extends JPanel {
 						board[row][col].setIcon(redSquare);
 					}
 				}
+					
+				}
 			}
-		}
+		
+	if (model.isGameOver()) {
+		JOptionPane jpane = new JOptionPane();
+		jpane.showMessageDialog(null, "You Win");
+	}
 	}
 
 	/*******************************************************************

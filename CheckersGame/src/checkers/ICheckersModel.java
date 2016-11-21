@@ -15,8 +15,8 @@ public interface ICheckersModel {
 	/***************************************************************************
 	 * Determines the validity of a move.
 	 * 
-	 * @param  move  The current move in question of being valid.
-	 * @return       Returns whether or not the move was valid.
+	 * @param  move   The current move in question of being valid.
+	 * @return        Returns whether or not the move was valid.
 	 **************************************************************************/
 	boolean isValidMove(Move move);
 	

@@ -13,7 +13,7 @@ public class Testing {
 	CheckersModel model = new CheckersModel();
 	
 	Move move = new Move();
-	
+	 
 	CheckersPiece singleRed = new SingleDisk(Player.Red);
 	CheckersPiece doubleRed = new DoubleDisk(Player.Red);
 	CheckersPiece singleWhite = new SingleDisk(Player.White);

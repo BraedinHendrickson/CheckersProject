@@ -1,0 +1,136 @@
+Begin, White's move.
+White has selected the board postion R5-C3.
+White moved from R5-C3 to R4-C2.
+
+Red's Turn.
+Red has selected the board postion R2-C2.
+Red moved from R2-C2 to R3-C3.
+
+White's Turn.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R6-C4.
+White failed to move from R6-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C4.
+White failed to move from R5-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C4.
+White failed to move from R5-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C4.
+White failed to move from R5-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C4.
+White failed to move from R5-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C4.
+White failed to move from R5-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C4.
+White failed to move from R5-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C4.
+White failed to move from R5-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C4.
+White failed to move from R5-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C4.
+White failed to move from R5-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C4.
+White failed to move from R5-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C4.
+White failed to move from R5-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C4.
+White failed to move from R5-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C4.
+White failed to move from R5-C4 to R5-C4 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C4.
+White failed to move from R5-C4 to R5-C5 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C5.
+White failed to move from R5-C5 to R5-C5 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C5.
+White failed to move from R5-C5 to R5-C5 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C5.
+White failed to move from R5-C5 to R5-C5 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C5.
+White failed to move from R5-C5 to R5-C5 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C5.
+White failed to move from R5-C5 to R5-C5 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C5.
+White failed to move from R5-C5 to R5-C5 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C5.
+White failed to move from R5-C5 to R5-C5 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C5.
+White failed to move from R5-C5 to R5-C5 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C5.
+White failed to move from R5-C5 to R5-C5 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C5.
+White failed to move from R5-C5 to R5-C5 because the 
+move was not valid. Please try a different move.
+White has selected the board postion R5-C5.
