@@ -1,5 +1,7 @@
 package checkers;
 
+import java.util.ArrayList;
+
 /**********************************************************************
  * Model class for executing the game logic of checkers.
  *********************************************************************/
@@ -8,7 +10,10 @@ public class CheckersModel implements ICheckersModel {
     /** Width and Height of the board. */
 	private static final int BOARDSIZE = 8;
 	
+	/** The row position previously moved from. */
 	private int prevRow = 0;
+	
+	/** The column position previously moved from. */
 	private int prevCol = 0;
 	
 	/** Final value 0. */
@@ -38,8 +43,14 @@ public class CheckersModel implements ICheckersModel {
 	/** Final value 8. */
 	private static final int EIGHT = 8;
 	
+	/** Final value -1. */
+	private static final int ONE_NEG = -1;
+	
 	/** Final value -2. */
 	private static final int TWO_NEG = -2;
+	
+	/** Holds valid potential move to positions. */
+	private ArrayList<Integer> helperList;
 	
 	/** The board on which checker pieces will be moved. */
 	private ICheckersPiece[][] board;
@@ -47,15 +58,19 @@ public class CheckersModel implements ICheckersModel {
 	/** The Player in-game who is executing a command. */
 	private Player player;
 	
-	
+	/** Boolean value of if it is the users first click or not. */
 	private boolean firstClick;
 	
 	/** Boolean value to see if multiple 'jumps' can be made in-game. */
 	private boolean sameTurn;
 	
+	/** Boolean value for if the helper option is selected. */
+	private boolean helper;
+	
 	/** Holds onto the last move made by the current Player. */
 	private Move prevMove;
 	
+	/** Information that will be displayed for the user. */
 	private String sessionMove;
 	
 	/**********************************************************************
@@ -64,7 +79,9 @@ public class CheckersModel implements ICheckersModel {
 	public CheckersModel() {
 		sessionMove = "Begin, White's move.";
 		firstClick = true;
+		helper = false;
 		player = Player.White;
+		helperList = new ArrayList<Integer>();
 		boardSetUp();
 	}
 	
@@ -76,7 +93,7 @@ public class CheckersModel implements ICheckersModel {
 	private ICheckersPiece[][] boardSetUp() {
 		board = new ICheckersPiece[BOARDSIZE][BOARDSIZE];
 		
-		/*board[ZERO][ZERO] = new SingleDisk(Player.Red);
+		board[ZERO][ZERO] = new SingleDisk(Player.Red);
 		board[ZERO][TWO] = new SingleDisk(Player.Red);
 		board[ZERO][FOUR] = new SingleDisk(Player.Red);
 		board[ZERO][SIX] = new SingleDisk(Player.Red);
@@ -100,10 +117,10 @@ public class CheckersModel implements ICheckersModel {
 		board[SEVEN][ONE] = new SingleDisk(Player.White);
 		board[SEVEN][THREE] = new SingleDisk(Player.White);
 		board[SEVEN][FIVE] = new SingleDisk(Player.White);
-		board[SEVEN][SEVEN] = new SingleDisk(Player.White);*/
+		board[SEVEN][SEVEN] = new SingleDisk(Player.White);
 		
-		board[TWO][FOUR] = new DoubleDisk(Player.Red);
-		board[TWO][SIX] = new DoubleDisk(Player.White);
+		//board[TWO][FOUR] = new DoubleDisk(Player.Red);
+		//board[TWO][SIX] = new DoubleDisk(Player.White);
 		
 		return board;
 	}
@@ -164,7 +181,7 @@ public class CheckersModel implements ICheckersModel {
 			setSessionMove(move, true);
 		
 			// The move was a jump.
-			if (Math.abs(move.getToRow() - move.getFromRow()) == 2) {
+			if (Math.abs(move.getToRow() - move.getFromRow()) == TWO) {
 				// Used for determining column movement.
 				int cPos = move.getToColumn() - move.getFromColumn();
 				// Used for determining row movement.
@@ -205,17 +222,16 @@ public class CheckersModel implements ICheckersModel {
 	public final boolean checkSameTurn(final Move move) {
 		int mTC = move.getToColumn();
 		int mTR = move.getToRow();
-		int mFC = move.getFromColumn();
-		int mFR = move.getFromRow();
-		
 
-		int[] twos = new int[2];
-		twos[0] = -2;
-		twos[1] = 2;
+		int[] twos = new int[TWO];
+		twos[ZERO] = TWO_NEG;
+		twos[ONE] = TWO;
 		for (int item1 : twos) {
 			for (int item2 : twos) {
-				if (mTR+item1 >= 0 && mTR+item1 < 8 && mTC+item2 >= 0 && mTC+item2 < 8) {
-					Move tempMove = new Move(mTR, mTC, mTR+item1, mTC+item2);
+				if (mTR + item1 >= ZERO && mTR + item1 < EIGHT 
+						&& mTC + item2 >= ZERO && mTC + item2 < EIGHT) {
+					Move tempMove = new Move(mTR, mTC, 
+							mTR + item1, mTC + item2);
 					if (isValidMove(tempMove)) {
 						prevMove = move;
 						return true;
@@ -281,13 +297,13 @@ public class CheckersModel implements ICheckersModel {
 	 *********************************************************************/
 	private void takePiece(final int rPos, final int cPos, final Move move) {
 		if (rPos == TWO && cPos == TWO) {
-			board[move.getFromRow() + 1][move.getFromColumn() + 1] = null;
+			board[move.getFromRow() + ONE][move.getFromColumn() + ONE] = null;
 		} else if (rPos == TWO && cPos == TWO_NEG) {
-			board[move.getFromRow() + 1][move.getFromColumn() - 1] = null;
+			board[move.getFromRow() + ONE][move.getFromColumn() - ONE] = null;
 		} else if (rPos == TWO_NEG && cPos == TWO) {
-			board[move.getFromRow() - 1][move.getFromColumn() + 1] = null;
+			board[move.getFromRow() - ONE][move.getFromColumn() + ONE] = null;
 		} else if (rPos == TWO_NEG && cPos == TWO_NEG) {
-			board[move.getFromRow() - 1][move.getFromColumn() - 1] = null;
+			board[move.getFromRow() - ONE][move.getFromColumn() - ONE] = null;
 		}
 	}
 	
@@ -325,8 +341,8 @@ public class CheckersModel implements ICheckersModel {
 	 * @return    Returns true if the game is over.
 	 *********************************************************************/
 	public final boolean isGameOver() {
-		int redPieceCount = 0;
-		int whitePieceCount = 0;
+		int redPieceCount = ZERO;
+		int whitePieceCount = ZERO;
 		
 		// Loops through the board and counts how many pieces each player
 		// has on the board.
@@ -343,10 +359,10 @@ public class CheckersModel implements ICheckersModel {
 		}
 		
 		// If either player has zero pieces remaining the game is over.
-		if (redPieceCount == 0) {
+		if (redPieceCount == ZERO) {
 			sessionMove = "\n\nWhite wins the game!";
 			return true;
-		} else if (whitePieceCount == 0) {
+		} else if (whitePieceCount == ZERO) {
 			sessionMove = "\n\nRed wins the game!";
 			return true;
 		}
@@ -354,7 +370,13 @@ public class CheckersModel implements ICheckersModel {
 		
 	}
 	
-	public void actionHandling(int row, int col) {
+	/************************************************************************
+	 * Takes actions based on if it is the users first or second click.
+	 * 
+	 * @param row   The board row coordinate.
+	 * @param col   The board column coordinate.
+	 ***********************************************************************/
+	public void actionHandling(final int row, final int col) {
 		if (firstClick) {
 			prevRow = row;
 			prevCol = col;
@@ -367,9 +389,15 @@ public class CheckersModel implements ICheckersModel {
 		}
 	}
 	
+	/************************************************************************
+	 * Returns a string based on if the game is over or whose turn it is. Used
+	 * for updating the status label.
+	 * 
+	 * @return str   String of the game state.
+	 ***********************************************************************/
 	public String currentStatusLabel() {
 		String str = "";
-		if (isGameOver() == true) {
+		if (isGameOver()) {
 			str = "   G a m e   O v e r   ";
 		} else if (currentPlayer() == Player.White) {
 			str = "   W h i t e ' s     T u r n   ";
@@ -379,49 +407,43 @@ public class CheckersModel implements ICheckersModel {
 		return str;
 	}
 	
-	public int boardLayout(int row, int col) {
+	/************************************************************************
+	 * Determines what piece should be rendered where for the view. Integers
+	 * are relative to their index of an array that stores imageicons in the 
+	 * view class.
+	 * 
+	 * @param row   The board row coordinate.
+	 * @param col   The board column coordinate.
+	 * @return      Returns integer related to array index.
+	 ***********************************************************************/
+	public int boardLayout(final int row, final int col) {
 		if (board[row][col] == null && (row + col) % TWO == ONE) {
-			return 2;
+			return TWO;
 		} else if (board[row][col] == null && (row + col) % TWO == ZERO) {
-			return 3;
-		} else if (board[row][col].player() == Player.White && board[row][col].type().equals("SingleDisk")) {
-			return 5;
-		} else if (board[row][col].player() == Player.White && board[row][col].type().equals("DoubleDisk")) {
-			return 7;
-		} else if (board[row][col].player() == Player.Red && board[row][col].type().equals("SingleDisk")) {
-			return 4;
-		} else if (board[row][col].player() == Player.Red && board[row][col].type().equals("DoubleDisk")) {
-			return 6;
+			return THREE;
+		} else if (board[row][col].player() == Player.White 
+				&& board[row][col].type().equals("SingleDisk")) {
+			return FIVE;
+		} else if (board[row][col].player() == Player.White 
+				&& board[row][col].type().equals("DoubleDisk")) {
+			return SEVEN;
+		} else if (board[row][col].player() == Player.Red 
+				&& board[row][col].type().equals("SingleDisk")) {
+			return FOUR;
+		} else if (board[row][col].player() == Player.Red 
+				&& board[row][col].type().equals("DoubleDisk")) {
+			return SIX;
 		} else {
 			return 0;
 		}
 	}
 	
-	public String getSessionMove() {
-		return sessionMove;
-	}
-	
-	public void setSessionMove(Move move, boolean valid) {
-		Player otherPlayer = null;
-		if (currentPlayer() == Player.White) {
-			otherPlayer = Player.Red;
-		} else {
-			otherPlayer = Player.White;
-		}
-		if (valid) {
-			sessionMove = currentPlayer().toString() + " moved from R" + move.getFromRow() + "-C" + move.getFromColumn() +
-				" to R" + move.getToRow() + "-C" + move.getToColumn() + ".\n\n" +  otherPlayer.toString() + "'s Turn.";
-		} else {
-			sessionMove = currentPlayer().toString() + " failed to move from R" + move.getFromRow() + "-C" + move.getFromColumn() +
-					" to R" + move.getToRow() + "-C" + move.getToColumn() + " because the \nmove was not valid. Please try a different move.";
-		} 
-		
-	}
-	
-	public void setSessionMove(int row, int col){
-		sessionMove = currentPlayer().toString() + " has selected the board postion R" + row + "-C" + col + ".";
-	}
-	
+
+	/************************************************************************
+	 * Sets up a new game with default values.
+	 * 
+	 * 
+	 ***********************************************************************/
 	public void reset() {
 		sessionMove = "Begin, White's move.";
 		firstClick = true;
@@ -429,7 +451,130 @@ public class CheckersModel implements ICheckersModel {
 		boardSetUp();
 	}
 	
+	/************************************************************************
+	 * Returns model variable firstClick.
+	 * 
+	 * @return firstClick   Returns the variable firstClick. 
+	 ***********************************************************************/
+	public boolean getFirstClick() {
+		return firstClick;
+	}
+	
+	/************************************************************************
+	 * BEGIN- SESSION METHODS
+	 ***********************************************************************/
+	
+	/************************************************************************
+	 * Returns a formated string of what the user has clicked on (position).
+	 * 
+	 * @return sessionMove   The coordinates of move from and move to.
+	 ***********************************************************************/
+	public String getSessionMove() {
+		return sessionMove;
+	}
+	
+	/************************************************************************
+	 * Sets the sessionMove variable to a string that contains the appropriate 
+	 * dialog for the move they made or attempted to make.
+	 * 
+	 * @param move    The move that the player has attempted to make.
+	 * @param valid   Boolean of whether the move was valid or not.
+	 ***********************************************************************/
+	public void setSessionMove(final Move move, final boolean valid) {
+		Player otherPlayer = null;
+		if (currentPlayer() == Player.White) {
+			otherPlayer = Player.Red;
+		} else {
+			otherPlayer = Player.White;
+		}
+		if (valid) {
+			sessionMove = currentPlayer().toString() + " moved from R" 
+					+ move.getFromRow() + "-C" + move.getFromColumn() + " to R" 
+					+ move.getToRow() + "-C" + move.getToColumn() + ".\n\n" 
+					+  otherPlayer.toString() + "'s Turn.";
+		} else {
+			sessionMove = currentPlayer().toString() + " failed to move from R" 
+					+ move.getFromRow() + "-C" + move.getFromColumn() 
+					+ " to R" + move.getToRow() + "-C" + move.getToColumn() 
+					+ " because the \nmove was not valid." 
+					+ "Please try a different move.";
+		} 
+	}
+	
+	/************************************************************************
+	 * Sets the sessionMove variable to a string of the coordinate the player
+	 * selected on their first click(piece selection).
+	 * 
+	 * @param row   The board row coordinate.
+	 * @param col   The board column coordinate.
+	 ***********************************************************************/
+	public void setSessionMove(final int row, final int col) {
+		sessionMove = currentPlayer().toString() 
+				+ " has selected the board postion R" + row + "-C" + col + ".";
+	}
 	
 	
+	/************************************************************************
+	 * END- SESSION METHODS
+	 ***********************************************************************/
 	
+	/************************************************************************
+	 * BEGIN- HELPER BORDER METHODS
+	 ***********************************************************************/
+	
+	/************************************************************************
+	 * Sets the boolean helper variable do determine if borders will be
+	 * present in the view.
+	 * 
+	 * @param x   True or false value.
+	 ***********************************************************************/
+	public void setHelper(final boolean x) {
+		helper = x;
+	}
+	
+	/************************************************************************
+	 * Converts an integer arraylist of valid moves to integer array and 
+	 * returns the array.
+	 * 
+	 * @return helperArray   The list of possible valid moves.
+	 ***********************************************************************/
+	public int[] getHelperList() {
+		int[] helperArray = new int[helperList.size()];
+		for (int i = ZERO; i < helperList.size(); i++) {
+			helperArray[i] = helperList.get(i);
+		}
+		return helperArray;
+	}
+	
+	/************************************************************************
+	 * Given a board position, it determines that pieces available valid
+	 * moves, given that it is a movable piece, storing them in an arraylist.
+	 * 
+	 * @param row   The board row coordinate.
+	 * @param col   The board column coordinate.
+	 ***********************************************************************/
+	public void calcHelper(final int row, final int col) {
+		helperList.clear();
+		if (helper) {
+			int[] ops = {TWO_NEG, ONE_NEG, ONE, TWO};
+			for (int i : ops) {
+				for (int j : ops) {
+					if (row + i >= ZERO && row + i < EIGHT && col + j >= ZERO 
+							&& col + j < EIGHT) {
+						if (Math.abs(i) == Math.abs(j)) {
+							Move move = new Move(row, col, row + i, col + j);
+							if (isValidMove(move)) {
+								helperList.add(row + i);
+								helperList.add(col + j);
+							}
+						}
+					}
+				}
+			}	
+		}
+	}
+	
+	/************************************************************************
+	 * END- HELPER BORDER METHODS
+	 ***********************************************************************/
 }

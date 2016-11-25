@@ -9,10 +9,10 @@ import java.io.PrintWriter;
 import java.util.Date;
 
 public class TextAreaHandling {
-	 File sessionFile;
-	 File rankingFile;
-	 FileReader reader;
-	 FileWriter writer;
+	private File sessionFile;
+	private File rankingFile;
+	private FileReader reader;
+	private FileWriter writer;
 	
 	TextAreaHandling() {
 	

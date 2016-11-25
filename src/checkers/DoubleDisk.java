@@ -10,7 +10,8 @@ public class DoubleDisk extends CheckersPiece {
 	 * 
 	 * @param  player  The user(player) who will own the piece.
 	 **************************************************************************/
-	protected DoubleDisk(final Player player) {
+	protected DoubleDisk(
+			final Player player) {
 		super(player);
 	}
 

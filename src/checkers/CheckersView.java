@@ -1,19 +1,19 @@
 package checkers;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 
+import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
@@ -39,22 +39,19 @@ public class CheckersView extends JPanel {
 	/** Icon for red label. */
 	private ImageIcon redCirclePlain = new ImageIcon(ClassLoader.getSystemResource("RedCircle20.png"));
 	/** Icon for red single disk. */
-	private ImageIcon redCircle = new ImageIcon(ClassLoader.getSystemResource("BlackSquareRS.png"));
+	private ImageIcon redCircle = new ImageIcon(ClassLoader.getSystemResource("BlackSquareRST.png"));
 	/** Icon for red double disk. */
-	private ImageIcon redCircleDouble = new ImageIcon(ClassLoader.getSystemResource("BlackSquareRD.png"));
+	private ImageIcon redCircleDouble = new ImageIcon(ClassLoader.getSystemResource("BlackSquareRDT.png"));
 	/** Icon for black label. */
 	private ImageIcon blackCirclePlain = new ImageIcon(ClassLoader.getSystemResource("BlackCircle20.png"));
 	/** Icon for black single disk. */
-	private ImageIcon blackCircle = new ImageIcon(ClassLoader.getSystemResource("BlackSquareBS.png"));
+	private ImageIcon blackCircle = new ImageIcon(ClassLoader.getSystemResource("BlackSquareBST.png"));
 	/** Icon for black double disk. */
-	private ImageIcon blackCircleDouble = new ImageIcon(ClassLoader.getSystemResource("BlackSquareBD.png"));
-	/** Icon for red tile. */
-	private ImageIcon redSquare = new ImageIcon(ClassLoader.getSystemResource("RedSquare.png"));
-	/** Icon for black tile. */
-	private ImageIcon blackSquare = new ImageIcon(ClassLoader.getSystemResource("BlackSquare.png"));
+	private ImageIcon blackCircleDouble = new ImageIcon(ClassLoader.getSystemResource("BlackSquareBDT.png"));
+
 	private ImageIcon[] iconList = new ImageIcon[8];
 	
-	
+	private Color[] colorlist = new Color[9];
 	
 	/** The playing board. */
 	private JButton[][] board;
@@ -113,13 +110,23 @@ public class CheckersView extends JPanel {
 	public CheckersView() {
 		
 		iconList[0] = blackCirclePlain;
-		iconList[1] = redCirclePlain;;
-		iconList[2] = redSquare;
-		iconList[3] = blackSquare;
+		iconList[1] = redCirclePlain;
+		iconList[2] = null;
+		iconList[3] = null;
 		iconList[4] = redCircle;
 		iconList[5] = blackCircle;
 		iconList[6] = redCircleDouble;
 		iconList[7] = blackCircleDouble;
+		
+		colorlist[0] = Color.RED;
+		colorlist[1] = Color.BLACK;
+		colorlist[2] = Color.WHITE;
+		colorlist[3] = Color.BLUE;
+		colorlist[4] = Color.GRAY;
+		colorlist[5] = Color.YELLOW;
+		colorlist[6] = Color.PINK;
+		colorlist[7] = Color.GREEN;
+		colorlist[8] = Color.ORANGE;
 
 		board = new JButton[BOARDSIZE][BOARDSIZE];
 
@@ -128,6 +135,7 @@ public class CheckersView extends JPanel {
 				board[row][col] = new JButton();
 				board[row][col].setPreferredSize(new Dimension(EIGHTZERO, EIGHTZERO));
 				left.add(board[row][col]);
+				
 			}
 		}
 
@@ -228,6 +236,15 @@ public class CheckersView extends JPanel {
 		board[row][col].setIcon(iconList[image]);
 	}
 	
+	public void setBackground(int row, int col, int c1, int c2) {
+		board[row][col].setBorder(null);
+		if ((row + col) % 2 == 0) {
+			board[row][col].setBackground(colorlist[c1]);
+		} else {
+			board[row][col].setBackground(colorlist[c2]);
+		}
+	}
+	
 	public void setTurnLabel(String str) {
 		playerTurn.setText(str);
 	}
@@ -249,6 +266,11 @@ public class CheckersView extends JPanel {
 				board[row][col].setEnabled(false);
 			}
 		}
+	}
+	
+	public void setHelper(int row, int col) {
+		board[row][col].setBorder(BorderFactory.createMatteBorder(
+                3, 3, 3, 3, Color.ORANGE));
 	}
 	
 	

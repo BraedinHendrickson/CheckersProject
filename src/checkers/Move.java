@@ -19,7 +19,7 @@ public class Move {
 	private int toColumn;
 	
 	/**********************************************************************
-	 * Constructor.
+	 * Default Constructor.
 	 *********************************************************************/
 	public Move() {
 		
