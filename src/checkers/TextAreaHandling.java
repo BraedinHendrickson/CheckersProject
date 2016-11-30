@@ -8,10 +8,22 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
+/*********************************************************
+ * The class that handles saving past winners and rank
+ *
+ *********************************************************/
 public class TextAreaHandling {
+	
+	/** The file for the session. */
 	private File sessionFile;
+	
+	/** The file for the rank. */
 	private File rankingFile;
+	
+	/** THe file reader. */
 	private FileReader reader;
+	
+	/**  The file writer. */
 	private FileWriter writer;
 	
 	TextAreaHandling() {

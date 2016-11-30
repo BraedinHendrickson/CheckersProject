@@ -3,12 +3,24 @@ package checkers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/************************************************************
+ * The Controller class for checkers.
+ *********************************************************/
 public class CheckersController {
 
+	/**The model for the game. **/
 	private CheckersModel model;
+	
+	/**The panel for the game. **/
 	private CheckersView view;
+	
+	/**The save/load for scores. **/
 	private TextAreaHandling taHandler;
+	
+	/**The drop down menu. **/
 	private PopupMenu menu;
+	
+	/**The popup for when you win. **/
 	private PopupWinner popup;
 	
 	

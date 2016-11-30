@@ -13,19 +13,45 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-
+/******************************************************
+ * The pop up for when someone wins.
+ *****************************************************/
 public class PopupWinner {
+	
+	/** An array that holds the letters of the alphabet. */
 	private String[] alphabet;
+	
+	/** The variable that controls the dimensions. */
 	private Dimension screenSize;
+	
+	/** The container that holds the objects. */
 	private Container cp;
+	
+	/** An array that holds description. */
 	private String[] description;
+	
+	/** The frame for the pop up. */
 	private final JFrame frame;
+	
+	/** The panel of the pop up. */
 	private JPanel panel;
+	
+	/** The text field in the pop up. */
 	private final JTextField textField;
+	
+	/** One of the combo boxes. */
 	private JComboBox<String> cBox1;
+	
+	/** One of the combo boxes. */
 	private JComboBox<String> cBox2;
+	
+	/** One of the combo boxes. */
 	private JComboBox<String> cBox3;
+	
+	/** The button. */
 	private JButton button;
+	
+	/** The count. */
 	private int count;
 	
 	/***********************************************************
@@ -70,7 +96,7 @@ public class PopupWinner {
 	 * Creates Java Combo Boxes and fills them with letters
 	 * to allow players to enter their initials for 
 	 * score keeping.
-	 */
+	 *********************************************************/
 	public void init() {
 	    for (String s : alphabet) {
 	    	cBox1.addItem(s);

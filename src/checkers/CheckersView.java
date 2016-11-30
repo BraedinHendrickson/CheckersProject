@@ -55,8 +55,10 @@ public class CheckersView extends JPanel {
 	private ImageIcon blackCircleDouble = new ImageIcon
 			(ClassLoader.getSystemResource("BlackSquareBDT.png"));
 
+	/**  Array of icons. */
 	private ImageIcon[] iconList = new ImageIcon[8];
 	
+	/** Array of colors. */
 	private Color[] colorlist = new Color[9];
 	
 	/** The playing board. */
@@ -91,6 +93,7 @@ public class CheckersView extends JPanel {
 	private Timer timerRed;
 	/** The timer during blacks turn. */
 	private Timer timerWhite;
+	/** Array of timers. */
 	private Timer[] timers = new Timer[2];
 	
 

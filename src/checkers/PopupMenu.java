@@ -19,24 +19,61 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/***************************************************
+ * The class for the option menu.
+ *
+ ************************************************/
 public class PopupMenu {
 	
+	/** The variable for the dimensions. */
 	private Dimension screenSize;
+	
+	/** The containers for the pop up. */
 	private Container cp;
+	
+	/** The array of options. */
 	private String[] description;
+	
+	/** The frame of the pop up/ */
 	private final JFrame frame;
+	
+	/** The panel of the pop up. */
 	private JPanel panel;
+	
+	/** The label. */
 	private JLabel label;
+	
+	/** The text field. */
 	private final JTextField textField;
+	
+	/** The combo box for the options. */
 	private JComboBox<String> cBox;
+	
+	/** The combo box for color zero. */
 	private JComboBox<String> cBoxZero;
+	
+	/** The combo box for color one. */
 	private JComboBox<String> cBoxOne;
+	
+	/** The button. */
 	private JButton button;
+	
+	/** Variable for whether or not is new game. */
 	private boolean newGame;
+	
+	/** Variable for whether or not is running. */
 	private boolean running;
+	
+	/** Variable for helper. */
 	private boolean helper;
+	
+	/** Int used to assign color zero. */
 	private int colorSelectZero;
+	
+	/** Int used to assign color one. */
 	private int colorSelectOne;
+	
+	/** Int value for count. */
 	private int count;
 
 	/***************************************************************
