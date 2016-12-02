@@ -37,23 +37,23 @@ public class CheckersView extends JPanel {
 	private static final int THREEZEROZERO = 300;
 
 	/** Icon for red label. */
-	private ImageIcon redCirclePlain = new ImageIcon
-			(ClassLoader.getSystemResource("RedCircle20.png"));
+	private ImageIcon redCirclePlain = new ImageIcon("./src/RedCircle20.png");
+			//(ClassLoader.getSystemResource("RedCircle20.png"));
 	/** Icon for red single disk. */
-	private ImageIcon redCircle = new ImageIcon
-			(ClassLoader.getSystemResource("BlackSquareRST.png"));
+	private ImageIcon redCircle = new ImageIcon("./src/BlackSquareRST.png");
+			//(ClassLoader.getSystemResource("BlackSquareRST.png"));
 	/** Icon for red double disk. */
-	private ImageIcon redCircleDouble = new ImageIcon
-			(ClassLoader.getSystemResource("BlackSquareRDT.png"));
+	private ImageIcon redCircleDouble = new ImageIcon("./src/BlackSquareRDT.png");
+			//(ClassLoader.getSystemResource("BlackSquareRDT.png"));
 	/** Icon for black label. */
-	private ImageIcon blackCirclePlain = new ImageIcon
-			(ClassLoader.getSystemResource("BlackCircle20.png"));
+	private ImageIcon blackCirclePlain = new ImageIcon("./src/BlackCircle20.png");
+			//(ClassLoader.getSystemResource("BlackCircle20.png"));
 	/** Icon for black single disk. */
-	private ImageIcon blackCircle = new ImageIcon
-			(ClassLoader.getSystemResource("BlackSquareBST.png"));
+	private ImageIcon blackCircle = new ImageIcon("./src/BlackSquareBST.png");
+			//(ClassLoader.getSystemResource("BlackSquareBST.png"));
 	/** Icon for black double disk. */
-	private ImageIcon blackCircleDouble = new ImageIcon
-			(ClassLoader.getSystemResource("BlackSquareBDT.png"));
+	private ImageIcon blackCircleDouble = new ImageIcon("./src/BlackSquareBDT.png");
+			//(ClassLoader.getSystemResource("BlackSquareBDT.png"));
 
 	/**  Array of icons. */
 	private ImageIcon[] iconList = new ImageIcon[8];
@@ -218,30 +218,62 @@ public class CheckersView extends JPanel {
 		scoreBoard.addActionListener(listenForBoardButton);
 	}
 	
+	/*****************************************************
+	 * Gets the text in the text area.
+	 * @return String of text in area.
+	 *****************************************************/
 	public String getTextArea() {
 		return ta.getText();
 	}
 	
+	/*****************************************************
+	 * Sets the text in the text area.
+	 * @param str String that will be set.
+	 ******************************************************/
 	public void setTextArea(String str) {
 		ta.setText(str);
 	}
 	
+	/*******************************************************
+	 * Gets the JButton at the coordinates. 
+	 * @param row The row of the button.
+	 * @param col The column of the button. 
+	 * @return The button at the coordinates.
+	 *******************************************************/
 	public JButton getButton(int row, int col) {
 		return board[row][col];
 	}
 	
+	/***************************************************
+	 * Gets the option button.
+	 * @return The option button.
+	 *****************************************************/
 	public JButton getOptionButton() {
 		return options;
 	}
 	
+	/*********************************************************
+	 * Gets the game info button.
+	 * @return The game info button.
+	 **********************************************************/
 	public JButton getGameInfoButton() {
 		return gameInfo;
 	}
 	
+	/***********************************************************
+	 * Gets the score board button.
+	 * @return The score board button.
+	 **********************************************************/
 	public JButton getScoreBoardButton() {
 		return scoreBoard;
 	}
 
+	/********************************************************
+	 * Sets the icon for the buttons.
+	 * @param row The row of the button.
+	 * @param col The column of the button. 
+	 * @param image The image to be set. 
+	 *******************************************************/
 	public void setButtonIcon(int row, int col, int image) {
 		board[row][col].setIcon(iconList[image]);
 	}
@@ -255,7 +287,7 @@ public class CheckersView extends JPanel {
 	 * applied to half the board.
 	 * @param c2 The color from the popup menu that will be
 	 * applied to the other half of the board. 
-	 */
+	 **************************************************************/
 	public void setBackground(int row, int col, int c1, int c2) {
 		board[row][col].setBorder(null);
 		if ((row + col) % 2 == 0) {
@@ -265,10 +297,18 @@ public class CheckersView extends JPanel {
 		}
 	}
 	
+	/***********************************************************
+	 * Sets the turn label.
+	 * @param str THe color of the player.
+	 ********************************************************/
 	public void setTurnLabel(String str) {
 		playerTurn.setText(str);
 	}
 	
+	/*********************************************************
+	 * Sets an image for the players turn. 
+	 * @param image The image for the player. 
+	 **********************************************************/
 	public void setTurnImage(int image) {
 		playerTurnIconLeft.setIcon(iconList[image]);
 		playerTurnIconRight.setIcon(iconList[image]);
@@ -296,6 +336,25 @@ public class CheckersView extends JPanel {
 		}
 	}
 	
+	/******************************************************************
+	 * Re-enables the buttons on the board.
+	 *****************************************************************/
+	public void reset(){
+		for (int row = ZERO; row < BOARDSIZE; row++) {
+			for (int col = ZERO; col < BOARDSIZE; col++) {
+				board[row][col].setEnabled(true);
+			}
+		}
+		
+		
+		
+	}
+	
+	/**************************************************************
+	 * Creates a border around possible moves.
+	 * @param row
+	 * @param col
+	 ****************************************************************/
 	public void setHelper(int row, int col) {
 		board[row][col].setBorder(BorderFactory.createMatteBorder(
                 3, 3, 3, 3, Color.ORANGE));

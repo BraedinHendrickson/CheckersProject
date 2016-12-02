@@ -201,8 +201,8 @@ public class PopupMenu {
 			
 		} else if (i == 1) {
 			label.setText(null);
-			ImageIcon icon = new ImageIcon
-					(ClassLoader.getSystemResource("fluffyBunny.jpg"));
+			ImageIcon icon = new ImageIcon("./src/fluffybunny.jpg");
+					//(ClassLoader.getSystemResource("fluffyBunny.jpg"));
 			label.setIcon(icon);
 
 			Timer timer = new Timer(); 
@@ -264,6 +264,7 @@ public class PopupMenu {
 		} else if (i == 4) {
 			newGame = true;
 			running = false;
+			
 			close();
 		} else {
 			System.out.println("hello");
@@ -285,38 +286,74 @@ public class PopupMenu {
 	 * GETTERS.
 	 *********************************************************************/
 	
+	/**********************************************************
+	 * Gets the integer code number for color zero.
+	 * @return Integer for color zero.
+	 **********************************************************/
 	public int getColorSelectZero() {
 		return colorSelectZero;
 	}
 	
+	/**********************************************************
+	 * Gets the integer code number for color one.
+	 * @return Integer for color one.
+	 ***********************************************************/
 	public int getColorSelectOne() {
 		return colorSelectOne;
 	}
 	
+	/******************************************************
+	 * Gets the helper.
+	 * @return The helper.
+	 *******************************************************/
 	public boolean getHelper() {
 		return helper;
 	}
 	
+	/********************************************************
+	 * Returns a boolean of whether or not it is a new game.
+	 * @return Boolean of whether or not is new game.
+	 *****************************************************/
 	public boolean getNewGame() {
 		return newGame;
 	}
 	
+	/*******************************************************
+	 * Returns whether or not the game is running.
+	 * @return Boolean for whether or not the game is running.
+	 *********************************************************/
 	public boolean getRunning() {
 		return running;
 	}
 	
+	/*******************************************************
+	 * Gets the select button.
+	 * @return The select button.
+	 *******************************************************/
 	public JButton getSelectButton() {
 		return button;
 	}
 	
+	/*******************************************************
+	 * Gets CBoxZero.
+	 * @return Java Combo Box cBoxZero.
+	 *********************************************************/
 	public JComboBox<String> getCBoxZero() {
 		return cBoxZero;
 	}
 	
+	/********************************************************
+	 * Gets CBoxOne.
+	 * @return Java Combo Box cBoxOne. 
+	 ********************************************************/
 	public JComboBox<String> getCBoxOne() {
 		return cBoxOne;
 	}
 	
+	/********************************************************
+	 * Gets option
+	 * @return The textField.
+	 *******************************************************/
 	public String getOption() {
 		return textField.getText();
 	}
@@ -326,34 +363,61 @@ public class PopupMenu {
 	 * SETTERS.
 	 ********************************************************************/
 	
+	/******************************************************************
+	 * Sets color select zero.
+	 * @param x Integer for which color to be selected.
+	 *******************************************************************/
 	public void setColorSelectZero(int x) {
 		colorSelectZero = x;
 	}
 	
+	/******************************************************************
+	 * Sets color select one.
+	 * @param x Integer for which color to be selected.
+	 ****************************************************************/
 	public void setColorSelectOne(int x) {
 		colorSelectOne = x;
 	}
 
+	/****************************************************************
+	 * Sets helper to true or not.
+	 * @param x Boolean for whether or not helper is true or not.
+	 ****************************************************************/
 	public void setHelper(boolean x) {
 		helper = x;
 	}
 	
+	/*************************************************************
+	 * Sets newGame to false.
+	 ************************************************************/
 	public void setNewGame() {
 		newGame = false;
 	}
 	
+	/**************************************************************
+	 * Sets running to true. 
+	 **************************************************************/
 	public void setRunning() {
 		running = true;
 	}
 	
+	/*********************************************************
+	 * Sets frame visibility to true.
+	 ***********************************************************/
 	public void setVisible() {
 		frame.setVisible(true);
 	}
 	
+	/********************************************************
+	 * Sets cBox index to zero.
+	 *********************************************************/
 	public void setCBoxIndex() {
 		cBox.setSelectedIndex(0);
 	}
 	
+	/*********************************************************
+	 * Sets the cBox intro.
+	 **********************************************************/
 	public void setCBoxIntro() {
 		textField.setText("Select an Option Below");
 	}

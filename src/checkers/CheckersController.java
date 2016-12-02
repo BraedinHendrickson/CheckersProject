@@ -153,12 +153,15 @@ public class CheckersController {
 					count++;
 				}
 			}
-
+		}
 			if (model.isGameOver()) {
 				view.gameOver();
 				popup.setVisible();
 			}
-		}
+			else{
+				view.reset();
+			}
+		
 	}
 	
 	/*******************************************************************

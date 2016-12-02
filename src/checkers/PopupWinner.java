@@ -154,10 +154,17 @@ public class PopupWinner {
 		}
 	}
 	
+	/**********************************************************
+	 * Sets the frame to visible.
+	 *********************************************************/
 	public void setVisible() {
 		frame.setVisible(true);
 	}
 	
+	/********************************************************
+	 * Gets the select button.
+	 * @return The select button.
+	 *********************************************************/
 	public JButton getSelectButton() {
 		return button;
 	}
