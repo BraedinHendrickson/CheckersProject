@@ -60,21 +60,37 @@ public class DoubleDisk extends CheckersPiece {
 		}
 		return false;
 	}
-			private int checkHorizontalDirection(int mTC, int mFC) {
-				int result = mTC - mFC;
-				if (result < 0) {
-					return 1;
-				} else {
-					return -1;
-				}	
-			}
-			
-			private int checkVerticalDirection(int mTR, int mFR) {
-				int result = mTR - mFR;
-				if (result < 0) {
-					return 1;
-				} else {
-					return -1;
-				}	
-			}
+	
+	/***************************************************************************
+	 * Checks to see if the piece is moving left or right.
+	 * 
+	 * @param  mTC        move to column position.
+	 * @param  mFC        move from column position.
+	 * @return 1 or -1    returns -1 for left, 1 for right.
+	 **************************************************************************/
+	private int checkHorizontalDirection(final int mTC, final int mFC) {
+		int result = mTC - mFC;
+		if (result < 0) {
+			return 1;
+		} else {
+			return -1;
+		}	
+	}
+	
+	/***************************************************************************
+	 * Logic for determining what constitutes as a valid movement across
+	 * the player board.
+	 * 
+	 * @param  mTR       move to row position.
+	 * @param  mFR       move from row position.
+	 * @return 1 or -1   returns -1 for up, 1 for down.
+	 **************************************************************************/
+	private int checkVerticalDirection(final int mTR, final int mFR) {
+		int result = mTR - mFR;
+		if (result < 0) {
+			return 1;
+		} else {
+			return -1;
+		}	
+	}
 }

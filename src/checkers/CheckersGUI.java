@@ -27,7 +27,10 @@ final class CheckersGUI {
 		CheckersView view = new CheckersView();
 		CheckersModel model = new CheckersModel();
 		PopupMenu menu = new PopupMenu();
-		CheckersController controller = new CheckersController(view, model, menu);
+		
+		@SuppressWarnings("unused")
+		CheckersController controller = 
+				new CheckersController(view, model, menu);
 		
 		JFrame frame = new JFrame("Checkers!!!");
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -8,31 +8,38 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
+/*********************************************************
+ * The class that handles the text area.
+ *
+ *********************************************************/
 public class TextAreaHandling {
+	/** The file for the session. */
 	private File sessionFile;
-	private File rankingFile;
-	private FileReader reader;
-	private FileWriter writer;
 	
+	/** The file for the rank. */
+	private File rankingFile;
+	
+	/** THe file reader. */
+	private FileReader reader;
+	
+	/**  The file writer. */
+private FileWriter writer;
+	
+
+/*****************************************************
+ * Default Constructor.
+ ***************************************************/
 	TextAreaHandling() {
 	
 		sessionFile = new File("sessionText.txt");
 		rankingFile = new File("rankingText.txt");
 		
-		
-		/*PrintWriter printer;
-		try {
-			printer = new PrintWriter(sessionFile);
-			printer.print("");
-			printer.close();
-		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}*/
-		
 		setUp();
 	}
 	
+	/*****************************************************
+	 * Creates a PrintWriter object.
+	 ***************************************************/
 	public void setUp() {
 		PrintWriter printer;
 		try {
@@ -40,11 +47,15 @@ public class TextAreaHandling {
 			printer.print("");
 			printer.close();
 		} catch (FileNotFoundException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 	}
 	
+	/****************************************************
+	 * Loads the session file.
+	 * @return A String for keeping track of score.
+	 **************************************************/
 	public String readSession() {
 		
 		try {
@@ -59,7 +70,7 @@ public class TextAreaHandling {
             int character;
  
             while ((character = reader.read()) != -1) {
-                str = str+((char) character);
+                str = str + ((char) character);
             }
             reader.close();
  
@@ -69,8 +80,11 @@ public class TextAreaHandling {
         return str;
     }
 	
-	
-	 public void writeSession(String str) {
+	/*******************************************************
+	 * Saves the session.
+	 * @param str The name that the file will be named.
+	 ********************************************************/
+	 public void writeSession(final String str) {
 		 
 		 
 		 try {
@@ -90,7 +104,10 @@ public class TextAreaHandling {
 	 
 	    }
 	
-
+	 /******************************************************
+	  * Reads the saved files to provide a ranking.
+	  * @return The players initials.
+	  *******************************************************/
 	 public String readRanking() {
 			
 			try {
@@ -105,21 +122,24 @@ public class TextAreaHandling {
 	            int character;
 	 
 	            while ((character = reader.read()) != -1) {
-	                str = str+((char) character);
+	                str = str + ((char) character);
 	            }
 	            reader.close();
 	 
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
-			if (str.equals("")){
+			if (str.equals("")) {
 				str = "No Rankings Currently.\n\n Be the first to win!!!";
 			}
 	        return str;
 	    }
 		
-		
-		 public void writeRanking(String str) {
+	 /**********************************************************
+		 * Assigns the rankings.
+		 * @param str The name of the player.
+		 ********************************************************/
+		 public void writeRanking(final String str) {
 			 
 			 
 			 try {

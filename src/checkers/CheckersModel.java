@@ -93,7 +93,7 @@ public class CheckersModel implements ICheckersModel {
 	private ICheckersPiece[][] boardSetUp() {
 		board = new ICheckersPiece[BOARDSIZE][BOARDSIZE];
 		
-		board[ZERO][ZERO] = new SingleDisk(Player.Red);
+		/*board[ZERO][ZERO] = new SingleDisk(Player.Red);
 		board[ZERO][TWO] = new SingleDisk(Player.Red);
 		board[ZERO][FOUR] = new SingleDisk(Player.Red);
 		board[ZERO][SIX] = new SingleDisk(Player.Red);
@@ -117,10 +117,10 @@ public class CheckersModel implements ICheckersModel {
 		board[SEVEN][ONE] = new SingleDisk(Player.White);
 		board[SEVEN][THREE] = new SingleDisk(Player.White);
 		board[SEVEN][FIVE] = new SingleDisk(Player.White);
-		board[SEVEN][SEVEN] = new SingleDisk(Player.White);
+		board[SEVEN][SEVEN] = new SingleDisk(Player.White);*/
 		
-		//board[TWO][FOUR] = new DoubleDisk(Player.Red);
-		//board[TWO][SIX] = new DoubleDisk(Player.White);
+		board[TWO][FOUR] = new DoubleDisk(Player.Red);
+		board[TWO][SIX] = new DoubleDisk(Player.White);
 		
 		return board;
 	}

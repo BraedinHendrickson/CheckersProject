@@ -11,14 +11,9 @@ public class SingleDisk extends CheckersPiece {
 	/** Final value 1. */
 	private static final int ONE = 1;
 	
-	/** Final value 2. */
-	private static final int TWO = 2;
-	
 	/** Final value -1. */
 	private static final int ONE_NEG = -1;
 	
-	/** Final value -2. */
-	private static final int TWO_NEG = -2;
 	
 	/***************************************************************************
 	 * Constructor, sets the owner(player) for a given piece.
@@ -67,7 +62,7 @@ public class SingleDisk extends CheckersPiece {
 				// Check moving UP one square.
 				if ((mTR - mFR) == ONE_NEG) {
 					return true;
-				} else if (mTR - mFR < 0) {
+				} else if (mTR - mFR < ZERO) {
 					xPos = ONE;
 					yPos = checkDirection(mTC, mFC);
 					if (board[mTR + xPos][mTC + yPos] != null 
@@ -84,7 +79,7 @@ public class SingleDisk extends CheckersPiece {
 				// Check moving DOWN one square.
 				if ((mTR - mFR) == ONE) {
 					return true;
-				} else if (mTR - mFR > 0) {
+				} else if (mTR - mFR > ZERO) {
 					xPos = ONE_NEG;
 					yPos = checkDirection(mTC, mFC);
 					if (board[mTR + xPos][mTC + yPos] != null 
@@ -99,12 +94,19 @@ public class SingleDisk extends CheckersPiece {
 		return false;	
 	}	
 	
-	private int checkDirection(int MTC, int MFC) {
-		int result = MTC - MFC;
-		if (result < 0) {
-			return 1;
+	/***************************************************************************
+	 * Checks to see if the piece is moving left or right.
+	 * 
+	 * @param  mTC        move to column position.
+	 * @param  mFC        move from column position.
+	 * @return 1 or -1    returns -1 for left, 1 for right.
+	 **************************************************************************/
+	private int checkDirection(final int mTC, final int mFC) {
+		int result = mTC - mFC;
+		if (result < ZERO) {
+			return ONE;
 		} else {
-			return -1;
+			return ONE_NEG;
 		}	
 	}	
 	

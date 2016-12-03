@@ -3,25 +3,47 @@ package checkers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/************************************************************
+ * The Controller class for checkers.
+ *********************************************************/
 public class CheckersController {
 
+	/**The model for the game. **/
 	private CheckersModel model;
+	
+	/**The panel for the game. **/
 	private CheckersView view;
+	
+	/**The save/load for scores. **/
 	private TextAreaHandling taHandler;
+	
+	/**The drop down menu. **/
 	private PopupMenu menu;
+	
+	/**The popup for when you win. **/
 	private PopupWinner popup;
 	
+	/** Final value 7. */
+	private static final int SEVEN = 7;
+	
+	/** Final value 8. */
+	private static final int EIGHT = 8;
 	
 	/***************************************************************************
+	 * Constructor for the CheckersController.
 	 * 
+	 * @param pView   Game graphics
+	 * @param pModel  Game mechanics
+	 * @param pMenu   Game options
 	 **************************************************************************/
-	public CheckersController(CheckersView view, CheckersModel model, PopupMenu menu) {
+	public CheckersController(final CheckersView pView, 
+			final CheckersModel pModel, final PopupMenu pMenu) {
 		taHandler = new TextAreaHandling();
 		popup = new PopupWinner();
 		
-		this.menu = menu;
-		this.model = model;
-		this.view = view;
+		this.menu = pMenu;
+		this.model = pModel;
+		this.view = pView;
 
 		this.view.addBoardListener(new ButtonListener());
 		this.menu.addBoardListener(new ButtonListener());
@@ -47,16 +69,18 @@ public class CheckersController {
 			
 			// If source is select button from popup menu.
 			if (e.getSource() == menu.getSelectButton()) {
-				if (menu.getOption().substring(7, 8).equals("a")) {
+				if (menu.getOption().substring(SEVEN, EIGHT).equals("a")) {
 					menu.performOperation(0);
-				} else if (menu.getOption().substring(7, 8).equals("4")) {
+				} else if 
+				(menu.getOption().substring(SEVEN, EIGHT).equals("4")) {
 					menu.close();
 					model.reset();
 					taHandler.setUp();
 					displayBoard();
 					displayAdditional();
 				} else {
-					menu.performOperation(Integer.parseInt(menu.getOption().substring(7, 8)));
+					menu.performOperation(Integer.parseInt(
+							menu.getOption().substring(SEVEN, EIGHT)));
 				}
 				
 			// If source is option button.	
@@ -94,8 +118,8 @@ public class CheckersController {
 			// Else find if source was a board button.
 			} else {
 				
-				for (int row = 0; row < 8; row++) {
-					for (int col = 0; col < 8; col++) {
+				for (int row = 0; row < EIGHT; row++) {
+					for (int col = 0; col < EIGHT; col++) {
 						if (e.getSource() == view.getButton(row, col)) {
 							model.actionHandling(row, col);
 							model.setHelper(menu.getHelper());
@@ -117,10 +141,11 @@ public class CheckersController {
 	 ******************************************************************/
 	private void displayBoard() {
 		
-		for (int row = 0; row < 8; row++) {
-			for (int col = 0; col < 8; col++) {
+		for (int row = 0; row < EIGHT; row++) {
+			for (int col = 0; col < EIGHT; col++) {
 				view.setButtonIcon(row, col, model.boardLayout(row, col));
-				view.setBackground(row, col, menu.getColorSelectZero(), menu.getColorSelectOne());
+				view.setBackground(row, col, menu.getColorSelectZero(), 
+						menu.getColorSelectOne());
 			}
 		}
 		
@@ -139,12 +164,14 @@ public class CheckersController {
 					count++;
 				}
 			}
-
+		}
 			if (model.isGameOver()) {
 				view.gameOver();
 				popup.setVisible();
+			} else {
+				view.reset();
 			}
-		}
+		
 	}
 	
 	/*******************************************************************
@@ -161,3 +188,5 @@ public class CheckersController {
 	
 
 }
+
+
